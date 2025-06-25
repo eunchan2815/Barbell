@@ -13,7 +13,7 @@ struct RootView: View {
         BarbellTabView(selection: $selection) {
             switch selection {
             case .home:
-                HomeView()
+                HomeView(selection: $selection)
             case .counter:
                 CounterView()
             case .timer:

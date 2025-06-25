@@ -5,6 +5,7 @@
 //  Created by 김은찬 on 6/25/25.
 //
 
+import Shimmer
 import SwiftUI
 
 struct StepComponent: View {
@@ -25,7 +26,7 @@ struct StepComponent: View {
                 
                 Circle()
                     .fill(.gray.opacity(0.15))
-                    .frame(width: 50, height: 50)
+                    .frame(width: 40, height: 40)
                     .overlay {
                         Image(systemName: "waveform.path.ecg")
                             .foregroundStyle(Color.foreground)
@@ -39,36 +40,17 @@ struct StepComponent: View {
                             .font(.bold(30))
                             .foregroundStyle(Color.foreground)
                     } else {
-                        Text("불러올수 없어요!")
-                            .font(.bold(24))
+                        Text("불러오는 중이에요!")
+                            .font(.bold(30))
                             .foregroundStyle(Color.foreground)
+                            .redacted(reason: .placeholder)
+                            .shimmering()
                     }
                     Spacer()
                 }
                 
                 VStack(alignment: .leading, spacing: 8) {
-                    GeometryReader { geometry in
-                        ZStack(alignment: .leading) {
-                            Rectangle()
-                                .fill(.gray.opacity(0.2))
-                                .frame(height: 8)
-                                .clipShape(size: 3)
-                            
-                            Rectangle()
-                                .fill(Color.foreground)
-                                .frame(
-                                    width: geometry.size.width * viewModel.completionPercentage,
-                                    height: 8
-                                )
-                                .clipShape(size: 3)
-                                .animation(.easeInOut(duration: 0.5), value: viewModel.completionPercentage)
-                        }
-                    }
-                    .frame(height: 8)
-                    
-                    Text("\(viewModel.completionPercentageInt)% 완료")
-                        .font(.medium(12))
-                        .foregroundStyle(.secondary)
+                    ExerciseProgressBar(viewModel.completionPercentage)
                 }
             }
         }

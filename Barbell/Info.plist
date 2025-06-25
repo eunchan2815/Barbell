@@ -1,23 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-    <dict>
-        <key>UIBackgroundModes</key>
-        <array/>
-        <key>NSHealthShareUsageDescription</key>
-        <string>걸음수 데이터를 읽어 일일 활동량을 표시합니다.</string>
-        
-        <key>AVSpeechSynthesisUsageDescription</key>
-        <string>플랭크 운동 중 음성 카운트를 위해 필요합니다.</string>
-        
-        <key>UIAppFonts</key>
-        <array>
-            <string>Pretendard-Bold.ttf</string>
-            <string>Pretendard-SemiBold.ttf</string>
-            <string>Pretendard-Medium.ttf</string>
-            <string>Pretendard-Regular.ttf</string>
-        </array>
-        <key>UIBackgroundModes</key>
-        <array/>
-    </dict>
+<dict>
+	<key>UIBackgroundModes</key>
+	<array/>
+	<key>NSHealthShareUsageDescription</key>
+	<string>걸음수 데이터를 읽어 일일 활동량을 표시합니다.</string>
+	<key>AVSpeechSynthesisUsageDescription</key>
+	<string>플랭크 운동 중 음성 카운트를 위해 필요합니다.</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Pretendard-Bold.ttf</string>
+		<string>Pretendard-SemiBold.ttf</string>
+		<string>Pretendard-Medium.ttf</string>
+		<string>Pretendard-Regular.ttf</string>
+	</array>
+</dict>
 </plist>

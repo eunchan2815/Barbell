@@ -36,8 +36,4 @@ final class StepViewModel: ObservableObject {
         }
         completionPercentage = min(Double(stepCount) / Double(goalSteps), 1.0)
     }
-    
-    var completionPercentageInt: Int {
-        return Int(completionPercentage * 100)
-    }
 }

@@ -8,15 +8,21 @@
 import SwiftUI
 
 struct HomeView: View {
+    @Binding var selection: TabItem
     var body: some View {
-        DefaultView {
-            VStack {
-                StepComponent()
+        DefaultView("홈") {
+            ScrollView {
+                VStack(spacing: 14) {
+                    StepComponent()
+                    CounterComponent {
+                        selection = .counter
+                    }
+                    TimerComponent {
+                        selection = .timer
+                    }
+                    Spacer()
+                }
             }
         }
     }
-}
-
-#Preview {
-    HomeView()
 }

@@ -9,7 +9,12 @@ import SwiftUI
 
 struct TimerView: View {
     var body: some View {
-        Text("타이머")
+        DefaultView("타이머") {
+            VStack {
+                
+            }
+            Spacer()
+        }
     }
 }
 

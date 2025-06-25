@@ -8,8 +8,39 @@
 import SwiftUI
 
 struct CounterView: View {
+    @StateObject private var viewModel = CounterViewModel()
     var body: some View {
-        Text("카운터")
+        DefaultView("카운트") {
+            VStack {
+                VStack(spacing: 30) {
+                    VStack {
+                        Text("\(viewModel.currentCount)")
+                            .font(.bold(80))
+                            .foregroundStyle(Color.foreground)
+                        
+                        Text("\(viewModel.currentCount)/ \(viewModel.totalCount)")
+                            .font(.regular(20))
+                            .foregroundStyle(Color.gray)
+                    }
+                    
+                    ExerciseProgressBar(viewModel.progress)
+                        .padding(.horizontal, 10)
+                    
+                    ExerciseControlBar {
+                        viewModel.starting()
+                    } pause: {
+                        viewModel.stop()
+                    } reset: {
+                        viewModel.reset()
+                    }
+                }
+            }
+            .padding(16)
+            .background(Color.sub)
+            .clipShape(size: 12)
+            .padding(.horizontal, 16)
+            Spacer()
+        }
     }
 }
 

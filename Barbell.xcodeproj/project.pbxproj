@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		7B603B8F2E0BD86E005F5A5D /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 7B603B8E2E0BD86E005F5A5D /* Shimmer */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		7B603AF92E0B875E005F5A5D /* Barbell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Barbell.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B603B8F2E0BD86E005F5A5D /* Shimmer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +83,7 @@
 			);
 			name = Barbell;
 			packageProductDependencies = (
+				7B603B8E2E0BD86E005F5A5D /* Shimmer */,
 			);
 			productName = Barbell;
 			productReference = 7B603AF92E0B875E005F5A5D /* Barbell.app */;
@@ -108,6 +114,7 @@
 			mainGroup = 7B603AF02E0B875E005F5A5D;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
+				7B603B8D2E0BD86E005F5A5D /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 7B603AFA2E0B875E005F5A5D /* Products */;
@@ -345,6 +352,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7B603B8D2E0BD86E005F5A5D /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/markiv/SwiftUI-Shimmer";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7B603B8E2E0BD86E005F5A5D /* Shimmer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7B603B8D2E0BD86E005F5A5D /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */;
+			productName = Shimmer;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7B603AF12E0B875E005F5A5D /* Project object */;
 }

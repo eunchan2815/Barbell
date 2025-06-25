@@ -19,7 +19,7 @@ struct BarbellTabBarItem: View {
                     .font(.bold(12))
             }
             .foregroundStyle(Color.foreground)
-            .frame(width: 50, height: 60)
+            .frame(width: 55, height: 60)
             .background(
                 isSelected ? Color.gray.opacity(0.15) : Color.clear
             )
