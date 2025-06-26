@@ -1,6 +1,7 @@
 import Foundation
 
-struct RateMenu: Hashable, Equatable {
+struct RateMenu: Identifiable, Equatable, Codable {
+    var id = UUID()
     let rateLabel: String
     let multiplier: Double
 }

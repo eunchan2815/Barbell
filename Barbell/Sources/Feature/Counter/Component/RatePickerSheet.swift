@@ -24,7 +24,7 @@ struct RatePickerSheet: View {
                 .font(.semiBold(16))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.vertical, 8)
-            ForEach(rates, id: \.self) { rate in
+            ForEach(rates, id: \.id) { rate in
                 Button {
                     selectedRate = rate
                     action()

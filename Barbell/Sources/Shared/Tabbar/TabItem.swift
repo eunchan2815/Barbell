@@ -26,7 +26,7 @@ enum TabItem: Int, CaseIterable {
         case .home:
             return "홈"
         case .counter:
-            return "카운터"
+            return "카운트"
         case .timer:
             return "타이머"
         }

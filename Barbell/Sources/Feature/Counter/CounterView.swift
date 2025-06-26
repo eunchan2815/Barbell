@@ -89,6 +89,9 @@ struct CounterView: View {
         .onTapGesture {
             showRatePicker = false
         }
+        .onDisappear {
+            viewModel.saveSettings()
+        }
     }
 }
 
