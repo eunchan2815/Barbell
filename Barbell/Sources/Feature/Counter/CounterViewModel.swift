@@ -11,70 +11,133 @@ import Combine
 final class CounterViewModel: ObservableObject {
     @Published var currentCount: Int = 0
     @Published var progress: Double = 0.0
-    @Published var rate: Float = 0.2
-    @Published var totalCount: Int = 10
+    @Published var rate = RateMenu(rateLabel: "보통", multiplier: 1.0)
+    @Published var totalCount: Int = 50
+    @Published var isPaused: Bool = false
     
-    var progressPercentage: Int {
-        Int(progress * 100)
-    }
+    let rateMenu: [RateMenu] = [
+        RateMenu(rateLabel: "느림", multiplier: 0.3),
+        RateMenu(rateLabel: "조금 느림", multiplier: 0.5),
+        RateMenu(rateLabel: "보통", multiplier: 1.0),
+        RateMenu(rateLabel: "조금 빠름", multiplier: 1.5),
+        RateMenu(rateLabel: "빠름", multiplier: 1.7)
+    ]
     
-    private let tts = AVSpeechSynthesizer()
+    let countMenu: [Int] = [10, 30, 50, 80, 100, 200]
+    
+    private let metronome = SoundPlayer()
+    private let ttsService = TTSService()
     private var timer: Timer?
     private var preCountTimer: Timer?
+    private var hasStartedOnce: Bool = false
     
-    func starting() {
+    func startOrResume() {
+        if isPaused {
+            isPaused = false
+            starting(resetProgress: false)
+        } else {
+            starting(resetProgress: true)
+        }
+    }
+    
+    func starting(resetProgress: Bool = true) {
         stopAllTimers()
-        currentCount = 0
-        progress = 0.0
         
-        speak("운동 시작합니다")
+        if resetProgress {
+            currentCount = 0
+            progress = 0.0
+            hasStartedOnce = false
+        }
         
-        var countdown = 8
-        preCountTimer = Timer.scheduledTimer(withTimeInterval: 1.5, repeats: true) { [weak self] timer in
-            guard let self = self else { return }
-            if countdown > 0 {
-                self.speak("\(countdown)")
-                countdown -= 1
-            } else {
-                timer.invalidate()
-                self.startMainCounting()
+        if !isPaused && !hasStartedOnce {
+            ttsService.speak("운동 시작")
+            hasStartedOnce = true
+            
+            var countdown = 8
+            preCountTimer = Timer.scheduledTimer(withTimeInterval: 1.5, repeats: true) { [weak self] timer in
+                guard let self = self else { return }
+                if countdown > 0 {
+                    self.ttsService.speak("\(countdown)")
+                    countdown -= 1
+                } else {
+                    timer.invalidate()
+                    self.startMainCounting()
+                }
             }
+        } else {
+            startMainCounting()
         }
     }
     
     private func startMainCounting() {
-        timer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) { [weak self] _ in
+        let baseInterval = 2.0
+        let interval = baseInterval / rate.multiplier
+        
+        timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { [weak self] _ in
             guard let self = self else { return }
             
             if self.currentCount < self.totalCount {
+                self.metronome.playSound()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.ttsService.speak("\(self.currentCount)")
+                }
                 self.currentCount += 1
                 self.progress = Double(self.currentCount) / Double(self.totalCount)
-                self.speak("\(self.currentCount)")
             } else {
                 self.timer?.invalidate()
             }
         }
     }
     
-    private func speak(_ text: String) {
-        let utterance = AVSpeechUtterance(string: text)
-        utterance.voice = AVSpeechSynthesisVoice(language: "ko-KR")
-        utterance.rate = rate
-        tts.speak(utterance)
-    }
     
     func stop() {
         stopAllTimers()
+        isPaused = true
     }
     
     func reset() {
         stopAllTimers()
         currentCount = 0
         progress = 0.0
+        isPaused = false
+        hasStartedOnce = false
     }
     
     private func stopAllTimers() {
         timer?.invalidate()
         preCountTimer?.invalidate()
     }
+    
+    
+//    //MARK: 속도 바꾸기
+//    func changeRate() {
+//        guard !isPaused && currentCount < totalCount else { return }
+//        
+//        restartTimerWithNewRate()
+//    }
+//    
+//    private func restartTimerWithNewRate() {
+//        timer?.invalidate()
+//        
+//        let baseInterval = 2.0
+//        let interval = baseInterval / rate.multiplier
+//        
+//        timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { [weak self] _ in
+//            guard let self = self else { return }
+//            
+//            if self.currentCount < self.totalCount {
+//                self.metronome.playSound()
+//                
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+//                    self.ttsService.speak("\(self.currentCount)")
+//                }
+//                
+//                self.currentCount += 1
+//                self.progress = Double(self.currentCount) / Double(self.totalCount)
+//            } else {
+//                self.timer?.invalidate()
+//            }
+//        }
+//    }
+    
 }

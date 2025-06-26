@@ -7,20 +7,20 @@
 
 import SwiftUI
 
-struct ExerciseSheet: View {
+struct SheetTrigger: View {
     let title: String
-    let count: Int
+    let count: String
     let action: () -> Void
     var body: some View {
         Button {
-            
+            action()
         } label: {
             HStack {
                 VStack(alignment: .leading, spacing: 6) {
                     Text(title)
                         .font(.medium(16))
                         .foregroundStyle(Color.foreground)
-                    Text("\(count)")
+                    Text(count)
                         .font(.medium(16))
                         .foregroundStyle(Color.gray)
                 }

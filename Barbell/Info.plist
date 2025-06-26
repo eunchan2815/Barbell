@@ -6,8 +6,6 @@
 	<array/>
 	<key>NSHealthShareUsageDescription</key>
 	<string>걸음수 데이터를 읽어 일일 활동량을 표시합니다.</string>
-	<key>AVSpeechSynthesisUsageDescription</key>
-	<string>플랭크 운동 중 음성 카운트를 위해 필요합니다.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Pretendard-Bold.ttf</string>
