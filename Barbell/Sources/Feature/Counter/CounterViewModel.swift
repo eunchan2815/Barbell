@@ -16,11 +16,11 @@ final class CounterViewModel: ObservableObject {
     @Published var isPaused: Bool = false
     
     let rateMenu: [RateMenu] = [
-        RateMenu(rateLabel: "느림", multiplier: 0.4),
-        RateMenu(rateLabel: "조금 느림", multiplier: 0.7),
+        RateMenu(rateLabel: "느림", multiplier: 0.5),
+        RateMenu(rateLabel: "조금 느림", multiplier: 0.75),
         RateMenu(rateLabel: "보통", multiplier: 1.0),
-        RateMenu(rateLabel: "조금 빠름", multiplier: 1.7),
-        RateMenu(rateLabel: "빠름", multiplier: 1.8)
+        RateMenu(rateLabel: "조금 빠름", multiplier: 1.25),
+        RateMenu(rateLabel: "빠름", multiplier: 1.5)
     ]
     
     let countMenu: [Int] = [10, 30, 50, 80, 100, 200]
@@ -67,7 +67,7 @@ final class CounterViewModel: ObservableObject {
             ttsService.speak("운동 시작")
             hasStartedOnce = true
             
-            var countdown = 8
+            var countdown = 5
             preCountTimer = Timer.scheduledTimer(withTimeInterval: 1.5, repeats: true) { [weak self] timer in
                 guard let self = self else { return }
                 if countdown > 0 {
@@ -84,7 +84,7 @@ final class CounterViewModel: ObservableObject {
     }
     
     private func startMainCounting() {
-        let baseInterval = 2.0
+        let baseInterval = 2.5
         let interval = baseInterval / rate.multiplier
         
         timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { [weak self] _ in

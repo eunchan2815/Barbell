@@ -24,8 +24,10 @@ final class StepViewModel: ObservableObject {
     
     func fetchSteps() {
         healthStore.fetchTodayStepCount { [weak self] steps in
-            self?.stepCount = Int(steps)
-            self?.updateCompletionPercentage()
+            DispatchQueue.main.async {
+                self?.stepCount = Int(steps)
+                self?.updateCompletionPercentage()
+            }
         }
     }
     
@@ -34,6 +36,8 @@ final class StepViewModel: ObservableObject {
             completionPercentage = 0.0
             return
         }
-        completionPercentage = min(Double(stepCount) / Double(goalSteps), 1.0)
+        DispatchQueue.main.async { [self] in
+            self.completionPercentage = min(Double(stepCount) / Double(goalSteps), 1.0)
+        }
     }
 }

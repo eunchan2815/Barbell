@@ -8,7 +8,7 @@ struct CounterView: View {
     var body: some View {
         DefaultView("카운트") {
             ZStack {
-                ScrollView {
+                ScrollView(showsIndicators: false) {
                     VStack {
                         VStack(spacing: 30) {
                             VStack {
@@ -56,6 +56,7 @@ struct CounterView: View {
                     
                     Spacer()
                 }
+                .padding(.vertical, 14)
                 
                 if showRatePicker || showCountPicker {
                     Color.black.opacity(0.3)
