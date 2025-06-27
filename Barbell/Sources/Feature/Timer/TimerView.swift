@@ -11,7 +11,7 @@ struct TimerView: View {
     @StateObject var viewModel = TimerViewModel()
     
     var body: some View {
-        DefaultView("타이머") {
+        DefaultView("타이머", false) {
             ScrollView {
                 VStack {
                     ZStack {

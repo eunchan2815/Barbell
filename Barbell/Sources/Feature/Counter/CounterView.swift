@@ -6,7 +6,7 @@ struct CounterView: View {
     @State private var showCountPicker = false
     
     var body: some View {
-        DefaultView("카운트") {
+        DefaultView("카운트", false) {
             ZStack {
                 ScrollView(showsIndicators: false) {
                     VStack {

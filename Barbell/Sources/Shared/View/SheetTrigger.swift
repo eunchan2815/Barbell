@@ -13,7 +13,10 @@ struct SheetTrigger: View {
     let action: () -> Void
     var body: some View {
         Button {
-            action()
+            withAnimation(.spring(response: 0.35, dampingFraction: 0.75)) {
+                HapticManager.instance.impact(style: .light)
+                action()
+            }
         } label: {
             HStack {
                 VStack(alignment: .leading, spacing: 6) {

@@ -26,8 +26,9 @@ struct RatePickerSheet: View {
                 .padding(.vertical, 8)
             ForEach(rates, id: \.id) { rate in
                 Button {
-                    selectedRate = rate
+                    HapticManager.instance.impact(style: .light)
                     action()
+                    selectedRate = rate
                 } label: {
                     HStack {
                         Text(rate.rateLabel)

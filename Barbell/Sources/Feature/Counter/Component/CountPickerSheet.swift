@@ -26,8 +26,9 @@ struct CountPickerSheet: View {
                 .padding(.vertical, 8)
             ForEach(count, id: \.self) { rate in
                 Button {
-                    selectedCount = rate
+                    HapticManager.instance.impact(style: .light)
                     action()
+                    selectedCount = rate
                 } label: {
                     HStack {
                         Text("\(rate)개")

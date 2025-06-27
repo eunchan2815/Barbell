@@ -10,6 +10,7 @@ struct TimerStart: View {
     var body: some View {
         Button {
             withAnimation(.spring(response: 0.3, dampingFraction: 0.5)) {
+                HapticManager.instance.impact(style: .light)
                 isTapped = true
                 action()
             }

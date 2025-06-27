@@ -20,6 +20,7 @@ struct ExerciseControlBar: View {
         HStack(spacing: 24) {
             Button {
                 withAnimation(.spring(response: 0.3, dampingFraction: 0.5)) {
+                    HapticManager.instance.impact(style: .light)
                     isStart.toggle()
                     animateTap = true
                 }
@@ -45,6 +46,7 @@ struct ExerciseControlBar: View {
             
             Button {
                 withAnimation(.spring(response: 0.3, dampingFraction: 0.5)) {
+                    HapticManager.instance.impact(style: .light)
                     animateResetTap = true
                     reset()
                     isStart = false

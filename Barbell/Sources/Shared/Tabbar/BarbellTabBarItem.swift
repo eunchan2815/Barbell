@@ -12,7 +12,12 @@ struct BarbellTabBarItem: View {
     let action: () -> Void
     
     var body: some View {
-        Button(action: action) {
+        Button {
+            withAnimation(.spring(response: 0.35, dampingFraction: 0.75)) {
+                HapticManager.instance.impact(style: .light)
+                action()
+            }
+        } label: {
             VStack(spacing: 10) {
                 tabItem.icon
                 Text(tabItem.text)
