@@ -9,10 +9,12 @@ import SwiftUI
 
 @main
 struct BarbellApp: App {
+    @AppStorage("darkMode") private var isDarkMode = false
     var body: some Scene {
         WindowGroup {
             NavigationStack {
                 RootView()
+                    .preferredColorScheme(isDarkMode ? .dark : .light)
             }
         }
     }

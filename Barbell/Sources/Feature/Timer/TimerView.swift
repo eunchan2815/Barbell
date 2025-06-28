@@ -12,37 +12,35 @@ struct TimerView: View {
     
     var body: some View {
         DefaultView("타이머", false) {
-            ScrollView {
-                VStack {
-                    ZStack {
-                        if viewModel.isDisplaySetTimeView {
-                            settingView
-                                .transition(
-                                    .asymmetric(
-                                        insertion: .move(edge: .bottom).combined(with: .opacity),
-                                        removal: .opacity
-                                    )
+            VStack {
+                ZStack {
+                    if viewModel.isDisplaySetTimeView {
+                        settingView
+                            .transition(
+                                .asymmetric(
+                                    insertion: .move(edge: .bottom).combined(with: .opacity),
+                                    removal: .opacity
                                 )
-                        } else {
-                            runningTimerView
-                                .transition(
-                                    .asymmetric(
-                                        insertion: .move(edge: .top).combined(with: .opacity),
-                                        removal: .opacity
-                                    )
+                            )
+                    } else {
+                        runningTimerView
+                            .transition(
+                                .asymmetric(
+                                    insertion: .move(edge: .top).combined(with: .opacity),
+                                    removal: .opacity
                                 )
-                        }
+                            )
                     }
-                    .animation(
-                        .spring(response: 0.4, dampingFraction: 0.75, blendDuration: 0.25),
-                        value: viewModel.isDisplaySetTimeView
-                    )
                 }
-                .padding(16)
-                .background(Color.sub)
-                .clipShape(size: 12)
-                .padding(.horizontal, 16)
+                .animation(
+                    .spring(response: 0.4, dampingFraction: 0.75, blendDuration: 0.25),
+                    value: viewModel.isDisplaySetTimeView
+                )
             }
+            .padding(16)
+            .background(Color.sub)
+            .clipShape(size: 12)
+            .padding(.horizontal, 16)
             Spacer()
         }
     }

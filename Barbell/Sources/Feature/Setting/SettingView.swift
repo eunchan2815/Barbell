@@ -6,33 +6,36 @@
 //
 
 import SwiftUI
+import FlexibleKit
 
 struct SettingView: View {
-    @Environment(\.dismiss) var dismiss
+    @State private var showNotion = false
+    @State private var showGithub = false
     var body: some View {
         DefaultView("설정", true) {
-            VStack {
-                Text("x")
+            ScrollView(showsIndicators: false) {
+                BellButton()
+                ThemeButton()
+                SettingItemButton(imageName: "Notion", title: "도움말", description: "Notion 페이지로 이동") {
+                    showNotion = true
+                }
+                SettingItemButton(imageName: "Github", title: "개발자", description: "GitHub 프로필 보기") {
+                    showGithub = true
+                }
+                Spacer().frame(height: 70)
+                Text("버전 1.0.0")
+                    .font(.medium(14))
+                    .foregroundStyle(.secondary)
             }
             Spacer()
         }
-        .navigationBarBackButtonHidden()
-        .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                HStack {
-                    Button {
-                        withAnimation(.spring(response: 0.35, dampingFraction: 0.75)) {
-                            HapticManager.instance.impact(style: .light)
-                            dismiss()
-                        }
-                    } label: {
-                        Image(systemName: "chevron.left")
-                            .foregroundStyle(Color.foreground)
-                            .font(.bold(16))
-                    }
-                }
-            }
+        .sheet(isPresented: $showNotion) {
+            FlexibleWebView(url: "https://www.notion.so/Barbell-21dcba4137ad80a78e6ece05986587b1?source=copy_link")
         }
+        .sheet(isPresented: $showGithub) {
+            FlexibleWebView(url: "https://github.com/eunchan2815")
+        }
+        .BarbellBackButton()
     }
 }
 

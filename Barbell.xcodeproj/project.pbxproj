@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7B603B8F2E0BD86E005F5A5D /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 7B603B8E2E0BD86E005F5A5D /* Shimmer */; };
+		7BC0AEB42E0FD47C0027ED4A /* FlexibleKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7BC0AEB32E0FD47C0027ED4A /* FlexibleKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BC0AEB42E0FD47C0027ED4A /* FlexibleKit in Frameworks */,
 				7B603B8F2E0BD86E005F5A5D /* Shimmer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -84,6 +86,7 @@
 			name = Barbell;
 			packageProductDependencies = (
 				7B603B8E2E0BD86E005F5A5D /* Shimmer */,
+				7BC0AEB32E0FD47C0027ED4A /* FlexibleKit */,
 			);
 			productName = Barbell;
 			productReference = 7B603AF92E0B875E005F5A5D /* Barbell.app */;
@@ -115,6 +118,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				7B603B8D2E0BD86E005F5A5D /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
+				7BC0AEB22E0FD47C0027ED4A /* XCRemoteSwiftPackageReference "FlexibleKit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 7B603AFA2E0B875E005F5A5D /* Products */;
@@ -362,6 +366,14 @@
 				minimumVersion = 1.5.1;
 			};
 		};
+		7BC0AEB22E0FD47C0027ED4A /* XCRemoteSwiftPackageReference "FlexibleKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/eunchan2815/FlexibleKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.5;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -369,6 +381,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7B603B8D2E0BD86E005F5A5D /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */;
 			productName = Shimmer;
+		};
+		7BC0AEB32E0FD47C0027ED4A /* FlexibleKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7BC0AEB22E0FD47C0027ED4A /* XCRemoteSwiftPackageReference "FlexibleKit" */;
+			productName = FlexibleKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

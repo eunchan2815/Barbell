@@ -1,6 +1,15 @@
 {
-  "originHash" : "fef25bdca91813013e9f62da30996b2504576bc8f5ed9d0a0bb177a563058bf3",
+  "originHash" : "e56fae2acfa18e1c18ad9a491d36de78438361d9346e95876d6749079f156350",
   "pins" : [
+    {
+      "identity" : "flexiblekit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/eunchan2815/FlexibleKit",
+      "state" : {
+        "revision" : "6717a8a6ccbf94ca689fb2fe1e7ff61c38b01438",
+        "version" : "1.0.5"
+      }
+    },
     {
       "identity" : "swiftui-shimmer",
       "kind" : "remoteSourceControl",
