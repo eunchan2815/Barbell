@@ -8,7 +8,14 @@
 import SwiftUI
 
 struct BellButton: View {
-    @State private var isToggle = false
+    @Binding var isToggle: Bool
+    var onToggleOn: () -> Void
+    
+    init(_ isToggle: Binding<Bool>, onToggleOn: @escaping () -> Void) {
+        self._isToggle = isToggle
+        self.onToggleOn = onToggleOn
+    }
+    
     var body: some View {
         VStack {
             HStack {
@@ -36,6 +43,11 @@ struct BellButton: View {
                 
                 Toggle("", isOn: $isToggle)
                     .toggleStyle(SwitchToggleStyle(tint: Color.background))
+                    .onChange(of: isToggle) { newValue in
+                        if newValue {
+                            onToggleOn()
+                        }
+                    }
             }
         }
         .padding(18)
@@ -43,8 +55,4 @@ struct BellButton: View {
         .clipShape(size: 12)
         .padding(.horizontal, 16)
     }
-}
-
-#Preview {
-    BellButton()
 }

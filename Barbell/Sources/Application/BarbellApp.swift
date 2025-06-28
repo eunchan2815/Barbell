@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct BarbellApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @AppStorage("darkMode") private var isDarkMode = false
     var body: some Scene {
         WindowGroup {
