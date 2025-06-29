@@ -283,6 +283,9 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Barbell/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "바벨";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "걸음수 데이터를 읽어 일일 활동량을 표시합니다.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "운동 시간이나 목표 등 건강 데이터를 저장하기 위해 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -315,6 +318,9 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Barbell/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "바벨";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "걸음수 데이터를 읽어 일일 활동량을 표시합니다.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "운동 시간이나 목표 등 건강 데이터를 저장하기 위해 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
