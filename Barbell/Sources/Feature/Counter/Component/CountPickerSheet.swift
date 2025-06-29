@@ -23,7 +23,8 @@ struct CountPickerSheet: View {
             Text("속도를 설정해주세요")
                 .font(.semiBold(16))
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.vertical, 8)
+                .padding(8)
+            
             ForEach(count, id: \.self) { rate in
                 Button {
                     HapticManager.instance.impact(style: .light)

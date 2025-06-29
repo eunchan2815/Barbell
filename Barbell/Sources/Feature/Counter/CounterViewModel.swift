@@ -45,6 +45,10 @@ final class CounterViewModel: ObservableObject {
     private var preCountTimer: Timer?
     private var hasStartedOnce: Bool = false
     
+    var isRunning: Bool {
+        timer != nil && timer?.isValid == true
+    }
+    
     func startOrResume() {
         if isPaused {
             isPaused = false

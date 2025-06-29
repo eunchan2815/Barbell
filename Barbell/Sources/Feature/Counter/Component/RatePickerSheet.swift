@@ -23,12 +23,13 @@ struct RatePickerSheet: View {
             Text("속도를 설정해주세요")
                 .font(.semiBold(16))
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.vertical, 8)
+                .padding(8)
+            
             ForEach(rates, id: \.id) { rate in
                 Button {
                     HapticManager.instance.impact(style: .light)
-                    action()
                     selectedRate = rate
+                    action()
                 } label: {
                     HStack {
                         Text(rate.rateLabel)

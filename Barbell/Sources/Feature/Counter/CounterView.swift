@@ -50,7 +50,9 @@ struct CounterView: View {
                     
                     SheetTrigger(title: "속도", count: viewModel.rate.rateLabel) {
                         withAnimation(.spring(duration: 0.1)) {
-                            showRatePicker = true
+                            if !viewModel.isRunning {
+                                showRatePicker = true
+                            }
                         }
                     }
                     
