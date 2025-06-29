@@ -18,24 +18,25 @@ struct SettingView: View {
         DefaultView("설정", true) {
             ZStack {
                 ScrollView(showsIndicators: false) {
-                    BellButton($viewModel.isToggle) {
+                    BellButton(
+                        isToggle: $viewModel.isToggle,
+                        text: viewModel.formattedTime
+                    ) {
                         showCustomPopup = true
                     }
                     ThemeButton()
                     SettingItemButton(
+                        url: "https://www.notion.so/Barbell-21dcba4137ad80a78e6ece05986587b1?source=copy_link",
                         imageName: "Notion",
                         title: "도움말",
                         description: "Notion 페이지로 이동"
-                    ) {
-                        showNotion = true
-                    }
+                    )
                     SettingItemButton(
+                        url: "https://github.com/eunchan2815",
                         imageName: "Github",
                         title: "개발자",
                         description: "GitHub 프로필 보기"
-                    ) {
-                        showGithub = true
-                    }
+                    )
                     Spacer().frame(height: 60)
                     
                     Text("버전 1.0.0")
@@ -64,15 +65,10 @@ struct SettingView: View {
                     )
                     .transition(.scale(scale: 0.9).combined(with: .opacity))
                     .zIndex(2)
+                    .padding(.bottom, 20)
                 }
             }
             .animation(.easeInOut(duration: 0.25), value: showCustomPopup)
-        }
-        .sheet(isPresented: $showNotion) {
-            FlexibleWebView(url: "https://www.notion.so/Barbell-21dcba4137ad80a78e6ece05986587b1?source=copy_link")
-        }
-        .sheet(isPresented: $showGithub) {
-            FlexibleWebView(url: "https://github.com/eunchan2815")
         }
         .BarbellBackButton()
     }

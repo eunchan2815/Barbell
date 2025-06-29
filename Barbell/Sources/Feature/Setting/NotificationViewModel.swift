@@ -9,8 +9,28 @@ import Foundation
 import UserNotifications
 
 final class NotificationViewModel: ObservableObject {
-    @Published var isToggle: Bool = false
-    @Published var selectedTime: Date = Date()
+    @Published var isToggle: Bool = UserDefaults.standard.bool(forKey: "notificationIsToggle") {
+        didSet {
+            UserDefaults.standard.set(isToggle, forKey: "notificationIsToggle")
+            saveNotificationSetting()
+        }
+    }
+    
+    @Published var selectedTime: Date = UserDefaults.standard.object(forKey: "notificationSelectedTime") as? Date ?? Date() {
+        didSet {
+            UserDefaults.standard.set(selectedTime, forKey: "notificationSelectedTime")
+            if isToggle {
+                saveNotificationSetting()
+            }
+        }
+    }
+    
+    var formattedTime: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "a h:mm"
+        formatter.locale = Locale(identifier: "ko_KR")
+        return formatter.string(from: selectedTime)
+    }
     
     func saveNotificationSetting() {
         if isToggle {
@@ -20,6 +40,7 @@ final class NotificationViewModel: ObservableObject {
         }
     }
     
+    //MARK: 알림 허가 확인 함수
     private func requestPermissionAndSchedule() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
             DispatchQueue.main.async {

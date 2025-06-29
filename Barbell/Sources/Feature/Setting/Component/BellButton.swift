@@ -9,10 +9,12 @@ import SwiftUI
 
 struct BellButton: View {
     @Binding var isToggle: Bool
+    let text: String
     var onToggleOn: () -> Void
     
-    init(_ isToggle: Binding<Bool>, onToggleOn: @escaping () -> Void) {
+    init(isToggle: Binding<Bool>, text: String, onToggleOn: @escaping () -> Void) {
         self._isToggle = isToggle
+        self.text = text
         self.onToggleOn = onToggleOn
     }
     
@@ -28,11 +30,11 @@ struct BellButton: View {
                     }
                 
                 VStack(alignment: .leading, spacing: 6) {
-                    Text("테마")
+                    Text("알림")
                         .font(.bold(16))
                         .foregroundStyle(Color.foreground)
                     
-                    Text(isToggle ? "알림 켜짐": "알람 꺼짐")
+                    Text(isToggle ? "알림 켜짐\n\(text)": "알람 꺼짐")
                         .font(.medium(14))
                         .foregroundStyle(.gray)
                 }

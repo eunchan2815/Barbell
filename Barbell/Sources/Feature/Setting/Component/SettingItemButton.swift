@@ -8,17 +8,12 @@
 import SwiftUI
 
 struct SettingItemButton: View {
+    let url: String
     let imageName: String
     let title: String
     let description: String
-    let action: () -> Void
     var body: some View {
-        Button {
-            withAnimation(.spring(response: 0.35, dampingFraction: 0.75)) {
-                HapticManager.instance.impact(style: .light)
-                action()
-            }
-        } label: {
+        Link(destination: URL(string: url)!) {
             VStack {
                 HStack {
                     Circle()
@@ -52,6 +47,11 @@ struct SettingItemButton: View {
             .background(Color.sub)
             .clipShape(size: 12)
             .padding(.horizontal, 16)
+        }
+        .onTapGesture {
+            withAnimation(.spring(response: 0.35, dampingFraction: 0.75)) {
+                HapticManager.instance.impact(style: .light)
+            }
         }
     }
 }
