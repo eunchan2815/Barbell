@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>NSUserNotificationUsageDescription</key>
-	<string>운동 알림을 보내기 위해 알림 권한이 필요합니다.</string>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Pretendard-Bold.ttf</string>
-		<string>Pretendard-SemiBold.ttf</string>
-		<string>Pretendard-Medium.ttf</string>
-		<string>Pretendard-Regular.ttf</string>
-	</array>
-	<key>UIBackgroundModes</key>
-	<array/>
-</dict>
+    <dict>
+        <key>NSUserNotificationUsageDescription</key>
+        <string>운동 알림을 보내기 위해 알림 권한이 필요합니다.</string>
+        <key>UIAppFonts</key>
+        <array>
+            <string>Pretendard-Bold.ttf</string>
+            <string>Pretendard-SemiBold.ttf</string>
+            <string>Pretendard-Medium.ttf</string>
+            <string>Pretendard-Regular.ttf</string>
+        </array>
+        <key>UIBackgroundModes</key>
+        <array/>
+        <key>CFBundleShortVersionString</key>
+        <string>1.0.1</string>
+    </dict>
 </plist>
